@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Petshop.API.V2.Controllers
 {
     [ApiVersion("2.0")]
-    [Route("api/v{version: apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class OwnerController : ControllerBase
     {

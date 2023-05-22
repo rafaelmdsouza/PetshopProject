@@ -1,23 +1,15 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Petshop.API;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddApplication();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddApiVersioning(cfg => {
-    cfg.AssumeDefaultVersionWhenUnspecified = true;
-    cfg.DefaultApiVersion = ApiVersion.Default;
-    cfg.ReportApiVersions = true;
-    cfg.ApiVersionReader = new UrlSegmentApiVersionReader();
-});
-builder.Services.AddVersionedApiExplorer(cfg => {
-    cfg.SubstituteApiVersionInUrl = true;
-    cfg.GroupNameFormat = "'v'VVV";
-});
+
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 
@@ -26,7 +18,16 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(cfg =>
+    {
+        var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+
+        foreach (var description in provider.ApiVersionDescriptions)
+        {
+            cfg.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+            description.ApiVersion.ToString());
+        }
+    });
 
 }
 
