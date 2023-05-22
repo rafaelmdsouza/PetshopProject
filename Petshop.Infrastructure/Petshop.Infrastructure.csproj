@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Petshop.Domain\Petshop.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
