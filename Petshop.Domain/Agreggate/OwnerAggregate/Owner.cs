@@ -1,8 +1,11 @@
+using Petshop.Domain.Core.Model;
+using Petshop.Domain.Exceptions;
+
 namespace Petshop.Domain.Agreggate.OwnerAggregate
 {
-    public class Owner
+    public class Owner : IAggregateRoot
     {
-        private Owner() {}
+        private Owner() { }
         public Owner(string name, int age, string email, string phone)
         {
             Id = Guid.NewGuid();
@@ -28,15 +31,21 @@ namespace Petshop.Domain.Agreggate.OwnerAggregate
 
         public void RegisterPet(Pet pet)
         {
+            if (pet == null)
+                throw new NullException($"{nameof(pet)} can't be null.");
+
             LastModified = DateTime.Now;
             _petList.Add(pet);
         }
 
-        public void RemovePet(Guid id)
+        public void RemovePet(Guid petId)
         {
-            var pet = _petList.Find(p => p.Id == id);
-            _petList.Remove(pet);
+            var pet = _petList.Find(p => p.Id == petId);
 
+            if (pet == null)
+                throw new NullException($"{nameof(petId)} can't be null.");
+
+            _petList.Remove(pet);
             LastModified = DateTime.Now;
         }
 
@@ -51,12 +60,18 @@ namespace Petshop.Domain.Agreggate.OwnerAggregate
 
         public void Disable()
         {
+            if (!IsActive)
+                throw new OwnerIsDisabledDomainException("The owner is already disabled.");
+
             IsActive = false;
             LastModified = DateTime.Now;
         }
 
         public void Enable()
         {
+            if (IsActive)
+                throw new OwnerIsDisabledDomainException("The owner is already disabled.");
+
             IsActive = true;
             LastModified = DateTime.Now;
         }

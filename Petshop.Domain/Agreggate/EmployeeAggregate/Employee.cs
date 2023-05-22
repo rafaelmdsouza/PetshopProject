@@ -1,6 +1,8 @@
+using Petshop.Domain.Core.Model;
+
 namespace Petshop.Domain.Agreggate.EmployeeAggregate
 {
-    public class Employee
+    public class Employee : IAggregateRoot
     {
         private Employee()
         {

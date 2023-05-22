@@ -12,7 +12,7 @@ namespace Petshop.Domain.Agreggate.OwnerAggregate
             Name = name;
             Age = age;
             Type = type;
-            IsVaccinated = null;
+            IsVaccinated = false;
 
             _history.Add(new PetHistory(null, "New pet added", Id, null));
         }
@@ -23,7 +23,7 @@ namespace Petshop.Domain.Agreggate.OwnerAggregate
         public PetType Type { get; private set; }
         public ICollection<PetHistory>? History => _history;
         private List<PetHistory> _history = new List<PetHistory>();
-        public bool? IsVaccinated {get;private set;}
+        public bool IsVaccinated { get; private set; }
 
         public void Grooming(Guid groomedBy)
         {
@@ -32,6 +32,7 @@ namespace Petshop.Domain.Agreggate.OwnerAggregate
 
         public void Vaccinate(Guid vaccinatedBy, string reason)
         {
+            IsVaccinated = true;
             _history.Add(new PetHistory(reason, "Pet vacinated", Id, vaccinatedBy));
         }
     }
