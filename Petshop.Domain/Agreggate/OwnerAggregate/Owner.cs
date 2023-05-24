@@ -29,15 +29,13 @@ namespace Petshop.Domain.Agreggate.OwnerAggregate
         public DateTime RegistrationDate { get; private set; }
         public DateTime LastModified { get; private set; }
 
+///////////////////////REWRITE
         public void RegisterPet(Pet pet)
         {
-            if (pet == null)
-                throw new NullException($"{nameof(pet)} can't be null.");
-
             LastModified = DateTime.Now;
             _petList.Add(pet);
         }
-
+/////////////////////////
         public void RemovePet(Guid petId)
         {
             var pet = _petList.Find(p => p.Id == petId);

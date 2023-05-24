@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Petshop.Domain.Agreggate.OwnerAggregate;
 
 namespace Petshop.API.V1.Controllers
 {
@@ -7,10 +8,19 @@ namespace Petshop.API.V1.Controllers
     [ApiController]
     public class OwnerController : ControllerBase
     {
+        private readonly IOwnerRepository _repository;
+
+        public OwnerController(IOwnerRepository repository)
+        {
+            _repository = repository;
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllOwners()
         {
-            return Ok("ok");
+            var employees = await _repository.GetAllAsync();
+
+            return Ok(employees);
         }
 
         [HttpGet]

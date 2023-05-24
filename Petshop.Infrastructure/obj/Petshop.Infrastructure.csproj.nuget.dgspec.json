@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj": {}
+    "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj": {}
   },
   "projects": {
-    "d:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj": {
+    "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Domain\\Petshop.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj",
-        "projectName": "Petshop.Infrastructure",
-        "projectPath": "d:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj",
+        "projectUniqueName": "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Domain\\Petshop.Domain.csproj",
+        "projectName": "Petshop.Domain",
+        "projectPath": "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Domain\\Petshop.Domain.csproj",
         "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-        "outputPath": "d:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\obj\\",
+        "outputPath": "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,12 +21,72 @@
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj",
+        "projectName": "Petshop.Infrastructure",
+        "projectPath": "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\Petshop.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
+        "outputPath": "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Domain\\Petshop.Domain.csproj": {
+                "projectPath": "D:\\RAFA\\PROGRAMAÇÃO\\.NET\\Petshop\\Petshop.Domain\\Petshop.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -46,6 +106,18 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.1.1, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
             }
           },
           "imports": [
