@@ -1,6 +1,8 @@
+using Petshop.Domain.Core.Model;
+
 namespace Petshop.Domain.Agreggate.OwnerAggregate
 {
-    public class Pet
+    public class Pet : IAggregateRoot
     {
         private Pet()
         {

@@ -13,6 +13,7 @@ namespace Petshop.Domain.Agreggate.OwnerAggregate
             EmployeeId = employeeId;
             PetId = petId;
         }
+        public int Id { get; private set; }
         public DateTime HistoryDate { get; private set; }
         public string? Reason { get; private set; }
         public string Message { get; private set;}
