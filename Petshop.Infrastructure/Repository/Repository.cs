@@ -22,7 +22,7 @@ public class Repository<T, TKey> : IRepository<T, TKey> where T : class, IAggreg
         await _dbContext.Set<T>().AddAsync(entity);
         await _dbContext.SaveChangesAsync();
     }
-
+c
     public async Task Delete(T entity)
     {
         _dbContext.Set<T>().Remove(entity);

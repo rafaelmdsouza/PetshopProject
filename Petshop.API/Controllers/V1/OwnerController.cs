@@ -10,28 +10,30 @@ namespace Petshop.API.V1.Controllers
     {
         private readonly IOwnerRepository _repository;
         private readonly IPetRepository _petRepository;
-        public OwnerController(IOwnerRepository repository, IPetRepository petRepository)
+        private readonly IOwnerQueries _ownerQueries;
+        public OwnerController(IOwnerRepository repository, IPetRepository petRepository, IOwnerQueries ownerQueries)
         {
             _repository = repository;
             _petRepository = petRepository;
+            _ownerQueries = ownerQueries;
+
         }
 
-        // [HttpGet]
-        // public async Task<IActionResult> GetAllOwners()
-        // {
-        //     var employees = await _repository.GetAllAsync();
+        [HttpGet]
+        public async Task<IActionResult> GetAllOwners()
+        {
+            var employees = await _ownerQueries.GetAllAsync();
+            return Ok(employees);
+        }
 
-        //     return Ok(employees);
-        // }
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetOwnerById(Guid id)
+        {
+            var employee = await _ownerQueries.GetById(id);
 
-        // [HttpGet]
-        // [Route("{id}")]
-        // public async Task<IActionResult> GetOwnerById(Guid id)
-        // {
-        //     var employee = await _repository.GetByIdAsync(id);
-
-        //     return Ok(employee);
-        // }
+            return Ok(employee);
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreateOwner(string name, int age, string email, string phone)
